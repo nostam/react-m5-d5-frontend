@@ -18,6 +18,7 @@ import MyShelf from "./components/MyShelf";
 import WarningSign from "./components/WarningSign";
 // import SingleBook from "./components/SingleBook";
 import BookList from "./components/BookList";
+import CommentArea from "./components/CommentArea.jsx";
 
 import history from "./data/history.json";
 import fantasy from "./data/fantasy.json";
@@ -37,7 +38,11 @@ class App extends React.Component {
   state = {
     category: books.fantasy,
     selectedCategory: "fantasy",
+    commentBook: null,
+    loading: true,
+    selectedBook: null,
   };
+
   handleDropdownCategory = (category) => {
     this.setState({
       books: books[category].slice(0, 6),
@@ -57,11 +62,9 @@ class App extends React.Component {
       this.setState({ books: books[category].slice(0, 12) });
     }
   };
-
   render() {
     return (
       <>
-        {console.log(books)}
         <MyNavBar title="M4 Book store!" />
         <Container>
           <MyJumbotron />
@@ -100,6 +103,7 @@ class App extends React.Component {
               <WarningSign text="Please select a category" variant="info" />
             )}
           </Row>
+          {/* <CommentArea /> */}
           <MyFooter />
         </Container>
       </>
