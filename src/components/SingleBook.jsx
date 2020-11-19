@@ -1,40 +1,18 @@
 import React from "react";
 import { Card, Button, Col, Row } from "react-bootstrap";
-import CommentArea from "./CommentArea";
+// import CommentArea from "./CommentArea";
 import MyBadge from "./MyBadge";
-// import MyModal from "./MyModal";
+
 class SingleBook extends React.Component {
-  state = {
-    selectedId: null,
-  };
-  getComment = async (asin) => {
-    try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/comments/" + asin,
-        {
-          methood: "GET",
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI2NjI5ZDk4MzViMDAwMTc1ODRlZTUiLCJpYXQiOjE2MDU3ODgzMTcsImV4cCI6MTYwNjk5NzkxN30.oP4BYUhxzJrIcZ0PWD68xETCimnePC7kIrswf4xirag",
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      let comment = await response.json();
-      console.log(comment); //call commentArea here
-    } catch (e) {
-      console.log("error!", e);
-    }
-  };
-  handleComment = (e) => {
-    e.preventDefault();
-    this.setState({ selectedId: e.currentTarget.value });
-  };
   render() {
     const book = this.props.book;
+    // const selectedBook = (asin) => {
+    //   console.log(asin);
+    //   this.setState({ test: asin });
+    // };
     return (
       <>
-        <Col xs={12} md={6} xl={4} className="my-4" key={book.asin.toString()}>
+        <Col xs={12} md={6} xl={4} className="my-4" key={book.asin}>
           <Card style={{ width: "16rem" }}>
             <Card.Img
               variant="top"
@@ -48,8 +26,7 @@ class SingleBook extends React.Component {
                 <Button
                   value={book.asin}
                   variant="primary"
-                  // onClick={(e) => handleComment(e)}
-                  onClick={() => <CommentArea asin={book.asin} />}
+                  onClick={this.props.onClick}
                 >
                   Buy @ ${book.price}
                 </Button>
@@ -57,9 +34,6 @@ class SingleBook extends React.Component {
             </Card.Body>
           </Card>
         </Col>
-        {/* {this.state.selectedId !== null
-          ? getComment(this.state.selectedId)
-          : ""} */}
       </>
     );
   }
