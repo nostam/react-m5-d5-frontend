@@ -100,7 +100,6 @@ class Home extends React.Component {
               <WarningSign text="Please select a category" variant="info" />
             )}
           </Row>
-          {/* <CommentArea /> */}
           <MyFooter />
         </Container>
       </>

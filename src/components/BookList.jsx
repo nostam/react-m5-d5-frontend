@@ -11,6 +11,7 @@ class BookList extends React.Component {
       <>
         {this.props.category.map((b) => (
           <SingleBook
+            isSelected={false}
             book={b}
             onClick={() => this.setState({ selectedId: b.asin })}
             key={b.asin}
