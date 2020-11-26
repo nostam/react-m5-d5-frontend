@@ -8,10 +8,6 @@ import {
   Row,
 } from "react-bootstrap";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-
-import MyNavBar from "./MyNavBar";
-import MyFooter from "./MyFooter";
 import MyJumbotron from "./MyJumbotron";
 import MyShelf from "./MyShelf";
 import WarningSign from "./WarningSign";
@@ -63,7 +59,6 @@ class Home extends React.Component {
   render() {
     return (
       <>
-        <MyNavBar title="M4 Book store!" />
         <Container>
           <MyJumbotron />
           <MyShelf />
@@ -100,7 +95,6 @@ class Home extends React.Component {
               <WarningSign text="Please select a category" variant="info" />
             )}
           </Row>
-          <MyFooter />
         </Container>
       </>
     );

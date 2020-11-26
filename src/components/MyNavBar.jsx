@@ -1,10 +1,12 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
 const NavBar = (props) => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand href="#">{props.title}</Navbar.Brand>
+      <Link to="/">
+        <Navbar.Brand>{props.title}</Navbar.Brand>
+      </Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
@@ -23,9 +25,13 @@ const NavBar = (props) => {
           </NavDropdown> */}
         </Nav>
         <Nav>
-          <Nav.Link href="#deets">More More</Nav.Link>
+          <Link to="/register">
+            <Nav.Link className="text-white" href="/register">
+              Registration
+            </Nav.Link>
+          </Link>
           <Nav.Link eventKey={2} href="#memes">
-            More More More
+            More to come
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
