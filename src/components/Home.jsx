@@ -38,6 +38,7 @@ class Home extends React.Component {
     // loading: true,
     // selectedBook: null,
     products: [],
+    newPost: [],
   };
   // handleDropdownCategory = category => {
   //   this.setState({
@@ -72,6 +73,45 @@ class Home extends React.Component {
     } catch (err) {
       console.log(err);
     }
+
+    // try {
+    //   let response;
+
+    //   if (id) {
+    //     response = await fetch("http://localhost:3001/products" + id, {
+    //       method: "PUT",
+    //       body: JSON.stringify(),
+    //       headers: new Headers({
+    //         "Content-Type": "application/json",
+    //       }),
+    //     });
+    //   } else {
+    //     response = await fetch("http://localhost:3001/products", {
+    //       method: "POST",
+    //       body: JSON.stringify(),
+    //       headers: new Headers({
+    //         "Content-Type": "application/json",
+    //       }),
+    //     });
+    //   }
+    // } catch (err) {
+    //   console.log(err);
+    // }
+  };
+
+  handleReviews = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/reviews");
+      if (response.ok) {
+        const products = await response.json();
+
+        this.setState({ products: products });
+      } else {
+        console.log("hei");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   componentDidMount = () => {
@@ -96,11 +136,9 @@ class Home extends React.Component {
                 return (
                   <Dropdown.Item
                     href="#/action-1"
-                    key={`${product.id}`}
+                    key={`${product._id}`}
                     /*onClick={() => this.handleDropdownCategory(category)}*/
-                  >
-                    {/*</DropdownButton>{category}*/}
-                  </Dropdown.Item>
+                  ></Dropdown.Item>
                 );
               })}
             </DropdownButton>
