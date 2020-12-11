@@ -11,7 +11,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <MyNavBar title="M4 Book store!" />
+        <MyNavBar title="M5 Book store!" />
         <Route exact path="/" component={Home} />
         <Route exact path="/register" component={Registration} />
       </Router>
