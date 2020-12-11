@@ -9,7 +9,7 @@ class shelf extends React.PureComponent {
       <Container fluid>
         <h4>3 Random Picks </h4>
         <Row className="justify-content-between no-gutters">
-          {this.props.products.map(product => (
+          {this.props.products.map((product) => (
             <SingleProduct product={product} key={product._id} />
           ))}
         </Row>
