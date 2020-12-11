@@ -11,7 +11,7 @@ export default class SingleProduct extends Component {
       imageUrl,
       price,
       category,
-    } = this.props.products;
+    } = this.props.product;
     return (
       <div>
         <Col xs={12} md={6} xl={4} className="my-4">
